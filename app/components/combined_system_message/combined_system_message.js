@@ -156,8 +156,8 @@ const postTypeMessage = {
 export default class CombinedSystemMessage extends React.PureComponent {
     static propTypes = {
         actions: PropTypes.shape({
-            getProfilesByIds: PropTypes.func.isRequired,
-            getProfilesByUsernames: PropTypes.func.isRequired,
+            getMissingProfilesByIds: PropTypes.func.isRequired,
+            getMissingProfilesByUsernames: PropTypes.func.isRequired,
         }).isRequired,
         allUserIds: PropTypes.array.isRequired,
         allUsernames: PropTypes.array.isRequired,
@@ -201,14 +201,14 @@ export default class CombinedSystemMessage extends React.PureComponent {
         const {actions} = this.props;
         const userProfiles = [];
         if (allUserIds.length > 0) {
-            const {data} = await actions.getProfilesByIds(allUserIds);
+            const {data} = await actions.getMissingProfilesByIds(allUserIds);
             if (data.length > 0) {
                 userProfiles.push(...data);
             }
         }
 
         if (allUsernames.length > 0) {
-            const {data} = await actions.getProfilesByUsernames(allUsernames);
+            const {data} = await actions.getMissingProfilesByUsernames(allUsernames);
             if (data.length > 0) {
                 userProfiles.push(...data);
             }

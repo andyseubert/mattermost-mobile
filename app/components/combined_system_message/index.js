@@ -4,7 +4,7 @@
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import {getProfilesByIds, getProfilesByUsernames} from 'mattermost-redux/actions/users';
+import {getMissingProfilesByIds, getMissingProfilesByUsernames} from 'mattermost-redux/actions/users';
 import {Preferences} from 'mattermost-redux/constants';
 import {getBool, getTeammateNameDisplaySetting} from 'mattermost-redux/selectors/entities/preferences';
 import {getCurrentUser} from 'mattermost-redux/selectors/entities/users';
@@ -24,8 +24,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         actions: bindActionCreators({
-            getProfilesByIds,
-            getProfilesByUsernames,
+            getMissingProfilesByIds,
+            getMissingProfilesByUsernames,
         }, dispatch),
     };
 }
